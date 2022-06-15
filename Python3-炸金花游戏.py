@@ -71,11 +71,11 @@ class Player:
             print(self.type, '\tWinner! 🎉🎉🎉')
 
     def judge_type(self):                   # 判断牌型,这个过程中，若出现对子类型的牌，则更新属性self.pair
-        self.card.sort(reverse=True)        # 对玩家的牌按照优先级从大到小排序
+        self.card.sort(reverse=True)        # 对玩家的牌按照优先级从大到小排序，比如3，6，5会被排成6,5,3
         cards = self.card
         if cards[0].prior1 == cards[1].prior1 and cards[0].prior1 == cards[2].prior1:
             self.type = '豹子'
-        elif cards[1].prior1-cards[0].prior1 == 1 and cards[2].prior1-cards[1].prior1 == 1:
+        elif cards[0].prior1-cards[1].prior1 == 1 and cards[1].prior1-cards[2].prior1 == 1:
             if cards[0].prior2 == cards[1].prior2 and cards[0].prior2 == cards[2].prior2:
                 self.type = '顺金'
             else:
